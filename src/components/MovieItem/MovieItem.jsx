@@ -8,6 +8,7 @@ function MovieItem({ movie }) {
 
     const handleClick = () => {
         dispatch({ type: 'SET_MOVIE', payload: movie})
+        dispatch({type: 'FETCH_GENRES', payload: movie})
         history.push('/detail')
 
     }
@@ -16,8 +17,8 @@ function MovieItem({ movie }) {
             <h1 key={movie.id}></h1>
             <h3>{movie.title}</h3>
             <img src={movie.poster}
-                alt={movie.title} />
-            <button onClick={handleClick}>Click</button>
+                alt={movie.title} 
+                onClick={handleClick}/>
         </>
     )
 };

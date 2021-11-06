@@ -13,12 +13,12 @@ router.get('/details', (req, res) => {
   JOIN movies_genres ON movies.id = movies.genres.movie_id
   JOIN genres ON genres.id = movies_genres.genre_id
   WHERE movies.id = $1`
-  pool.query (query, [req.query.id])
-  .then((result) => {
-    console.log(result.rows)
-  }).catch((err) => {
-    console.log ('error in get', err)
-  })
+  pool.query(query, [req.query.id])
+    .then((result) => {
+      console.log(result.rows)
+    }).catch((err) => {
+      console.log('error in get', err)
+    })
 });
 
 module.exports = router;
