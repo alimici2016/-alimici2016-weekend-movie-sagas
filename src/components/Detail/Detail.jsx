@@ -4,22 +4,26 @@ import { useEffect } from 'react';
 
 function Detail () {
 
-    const id = useSelector(store => store.movieId)
+    const movieId = useSelector(store => store.movieId)
+    const movies = useSelector(store => store.movie)
+
+    // const movieSelect = movies.filter(movie => movie.id === movieId)
+    
 
     useEffect(() => {
         fetchMovie();
     }, [])
 
-    const fetchMovie = () => {
-        axios({
-            method: 'GET',
-            url: `/api/movies/details?id=${id}`
-        }).then ((response) => {
-            console.log('response', response)
-        }).catch((err) => {
-            console.log(err)
-        })
-    };
+    // const fetchMovie = () => {
+    //     axios({
+    //         method: 'GET',
+    //         url: `/api/movies/details?id=${id}`
+    //     }).then ((response) => {
+    //         console.log('response', response)
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    // };
     // console.log(movieId)
 
      return(
