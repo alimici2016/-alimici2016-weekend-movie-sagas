@@ -10,6 +10,7 @@ function App() {
       <Router>        
         <Route path="/" exact>
           <MovieList />
+          
         </Route>
         
         <Detail path = '/detail'/> 
