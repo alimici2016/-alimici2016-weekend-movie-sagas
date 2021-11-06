@@ -6,7 +6,7 @@ import './MovieList.css'
 
 function MovieList() {
 
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
 
@@ -16,15 +16,15 @@ function MovieList() {
 
     const handleClick = () => {
         //I want to on click send the movie id to a reducer
-        history.push('/detail')
+        // history.push('/detail')
     }
 
     return (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
-                {movies.map(movie => (
-                    <MovieItem key={movie.id} movie={movie} />
+                 {movies.map(movie => ( 
+                    <MovieItem key={movie.id} movie={movie} /> 
                 ))}
             </section>
         </main >
