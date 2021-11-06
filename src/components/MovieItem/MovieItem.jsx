@@ -7,7 +7,7 @@ function MovieItem({ movie }) {
     const history = useHistory();
 
     const handleClick = () => {
-        dispatch({ type: 'SET_ID', payload: movie})
+        dispatch({ type: 'SET_MOVIE', payload: movie})
         history.push('/detail')
 
     }

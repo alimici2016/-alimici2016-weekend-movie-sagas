@@ -51,9 +51,8 @@ const movies = (state = [], action) => {
 const movieId = (state = {}, action) => {
 
     switch (action.type) {
-        case 'SET_ID':
+        case 'SET_MOVIE':
             return action.payload;
-            console.log(action.payload)
         default:
             return state;
     }
