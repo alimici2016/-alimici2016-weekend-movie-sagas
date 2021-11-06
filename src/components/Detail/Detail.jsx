@@ -1,10 +1,23 @@
-// import useSelector from 'react-redux';
-// function Detail () {
+import useSelector from 'react-redux';
+import axios from 'axios';
 
-//     const films = useSelector(store => store.movies)
+function Detail () {
 
-//     return(
-//         <h1>Hello</h1>
-//     )
-// }
-// export default Detail;
+    const films = useSelector(store => store.movies)
+
+    const fetchMovie = () => {
+        axios({
+            method: 'GET',
+            url: '/movieRouter/:id'
+        }).then ((response) => {
+            console.log('response', response)
+        }).catch((err) => {
+            console.log(err)
+        })
+    };
+
+    return(
+        
+    )
+}
+export default Detail;

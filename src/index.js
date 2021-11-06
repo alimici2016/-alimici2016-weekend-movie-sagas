@@ -26,7 +26,7 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
 // Create sagaMiddleware
@@ -41,6 +41,17 @@ const movies = (state = [], action) => {
             return state;
     }
 }
+
+const movieId = (store = (''), action) => {
+    switch (action.type) {
+        case 'SET_ID':
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
+
 
 // Used to store the movie genres
 const genres = (state = [], action) => {
@@ -68,7 +79,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
