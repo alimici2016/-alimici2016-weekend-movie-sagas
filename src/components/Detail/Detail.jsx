@@ -5,13 +5,13 @@ import { useEffect } from 'react';
 function Detail () {
 
     const movieId = useSelector(store => store.movieId)
-    const movies = useSelector(store => store.movie)
+    // const movies = useSelector(store => store.movie)
 
     // const movieSelect = movies.filter(movie => movie.id === movieId)
     
 
     useEffect(() => {
-        fetchMovie();
+        // fetchMovie();
     }, [])
 
     // const fetchMovie = () => {
@@ -27,7 +27,12 @@ function Detail () {
     // console.log(movieId)
 
      return(
-        <h1></h1>
+         <>
+        <h1>{movieId.title}</h1>
+        <img src={movieId.poster} />
+        <p>{movieId.description}</p>
+        
+        </>
      )
 }
 export default Detail;
