@@ -20,7 +20,7 @@ function* rootSaga() {
 function* fetchGenres (action) {
     try{
         let movie = action.payload
-        const response = axios.get(`/api/genre/details?id=${movie.id}`)
+        const response = yield axios.get(`/api/genre/details?id=${movie.id}`)
         yield put ({type: 'SET_GENRES', payload: response.data})
     }catch(err) {
         console.log(err)

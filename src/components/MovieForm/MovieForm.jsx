@@ -1,8 +1,9 @@
 import axios from 'axios';
+import {useState} from 'react'
 
 function MovieForm() {
 
-    const [movie, setMovie]
+    const [movie, setMovie] = useState([])
 
     const postData = () => {
         axios({
@@ -15,10 +16,8 @@ function MovieForm() {
             console.log(err)
         });
 
-
-        return(
-            
-        )
     }
 
-}
+};
+
+export default MovieForm 
