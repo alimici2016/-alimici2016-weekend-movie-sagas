@@ -1,55 +1,82 @@
 import axios from 'axios';
 import { useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import {useEffect} from 'react';
 
 function MovieForm() {
 
-    const [movie, setMovie] = useState({})
+    const genres = useSelector(store => store.allGenres)
 
-    // const postData = () => {
-    //     axios({
-    //         method: 'POST',
-    //         url: '/api/movie',
-    //         data: movie
-    //     }).then((response) => {
-    //         console.log(response)
-    //     }).catch((err) => {
-    //         console.log(err)
-    //     });
-    // }
+    const history = useHistory();
 
-    const handleSubmit = (event) => {
+    const dispatch = useDispatch();
+
+    const [movie, setMovie] = useState({
+        title:'',
+        poster:'',
+        description:'',
+        genre_id:''
+    });
+
+    const handleChange = (event, property) => {
+        setMovie({ ...movie, [property]: event.target.value})
+    };
+
+    const addMovie = (event) => {
         event.preventDefault();
         dispatch({type: "ADD_MOVIE", payload: movie })
-        history.push('/');
+        // history.push('/');
     };
 
     return (
+        <>
+        <h3>Submit your own!</h3>
         <div>
-            <form onSubmit={(event) => handleSubmit(event)}>
+            <form onSubmit={addMovie}>
             <input
-            className="input"
-            onChange={(event) => setMovie(event.target.value)}
+            onChange={(event) => handleChange(event, 'title')}
             type ="text"
+            placeholder="title"
             value={movie.title}
             >
             </input>
             <input
-            className="input"
-            onChange={(event) => setMovie(event.target.value)}
+            onChange={(event) => handleChange(event, 'poster')}
             type ="text"
+            placeholder="url"
             value={movie.poster}
             >
             </input>
             <input
-            className="input"
-            onChange={(event) => setMovie(event.target.value)}
+            onChange={(event) => handleChange(event, 'description')}
             type ="text"
+            placeholder= "description"
             value={movie.description}
             >
             </input>
-            <button onClick={handleSubmit}></button>
+            <select
+            // value={genre_id}
+            onChange={handleChange}>
+              <option value="">Choose a category</option>
+              <option value={1}>Adventure</option>
+              <option value={2}>Animated</option>
+              <option value={3}>Biographical</option>
+              <option value={4}>Comedy</option>
+              <option value={5}>Disaster</option>
+              <option value={6}>Drama</option>
+              <option value={7}>Epic</option>
+              <option value={8}>Fantasy</option>
+              <option value={9}>Musical</option>
+              <option value={10}>Romantic</option>
+              <option value={11}>Science Fiction</option>
+              <option value={12}>Space-Opera</option>
+              <option value={13}>Superhero</option>
+            <button type= "submit">Submit</button>
+            </select>
             </form>
         </div>
+        </>
     )
 
 };
