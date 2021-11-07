@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-router.get('/all', (req, res) => {
+router.get('/', (req, res) => {
 
   const query = `SELECT genre.name FROM genre;`;
   pool.query(query)

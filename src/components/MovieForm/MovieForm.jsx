@@ -1,12 +1,8 @@
-import axios from 'axios';
 import { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {useEffect} from 'react';
 
 function MovieForm() {
-
-    const genres = useSelector(store => store.allGenres)
 
     const history = useHistory();
 
