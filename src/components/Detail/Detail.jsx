@@ -11,6 +11,8 @@ function Detail() {
 
     console.log(genres)
 
+    //Accessing multiple stores to iterate first genre and then render each movie with it's genre
+
     return (
         <>
               

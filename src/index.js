@@ -15,10 +15,10 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres)
-    yield takeEvery('ADD_MOVIE', addMovie)
+    yield takeEvery('ADD_MOVIE', addMovie) //saga for when I want to add a movie this takes us to the addMovie function
 };
 
-function* addMovie(action) {
+function* addMovie(action) {//add move takes in the action that was dispatched to post to the database, then rerender the movies
     try {
         axios.post('/api/movie', action.payload);
         yield put({ type: 'FETCH_MOVIES' })

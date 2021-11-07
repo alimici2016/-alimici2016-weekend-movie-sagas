@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import { Container } from "@mui/material";
 
 function MovieItem({ movie }) {
@@ -15,6 +14,8 @@ function MovieItem({ movie }) {
         history.push('/detail')
 
     }
+    //On click we dispatch two different places with the payload movie,
+    //below we have the individual items, being rendered.
     return (
         <>
             <Paper
