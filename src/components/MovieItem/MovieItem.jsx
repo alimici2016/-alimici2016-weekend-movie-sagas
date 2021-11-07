@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import { Container } from "@mui/material";
 
 function MovieItem({ movie }) {
 
@@ -16,31 +17,33 @@ function MovieItem({ movie }) {
     }
     return (
         <>
-            <Paper>
-                <Box
-                    sx={{
-                        margin: 5,
-                        padding: 5,
-                        backgroundColor: 'tan',
-                        display: 'flex',
-                         '&:hover': {
-                            opacity: [.8]
-                        },
-                        '& > :not(style)': {
-                            m: .1,
-                            width: 300,
-                        },
-                    }}
+            <Paper
+                sx={{
+                   margin: 'auto'
+
+                }}>
+                <Container
+                sx={{
+                    margin: 1,
+                    padding: 5,
+                    '&:hover': {
+                        opacity: [.8]
+                    },
+                    '& > :not(style)': {
+                        m: .1,
+                        width: 300,
+                    },
+                }}
                 >
                 <div>
-                <h1 key={movie.id}></h1>
-                <h3>{movie.title}</h3>
-                <img src={movie.poster}
-                alt={movie.title}
-                onClick={handleClick} />
+                    <h1 key={movie.id}></h1>
+                    <h3>{movie.title}</h3>
+                    <img src={movie.poster}
+                        alt={movie.title}
+                        onClick={handleClick} />
                 </div>
-                </Box>
-            </Paper>
+                </Container>
+        </Paper>
         </>
     )
 };

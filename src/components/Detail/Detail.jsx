@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
+import { margin } from '@mui/system';
 
 function Detail() {
 
@@ -11,29 +13,24 @@ function Detail() {
 
     return (
         <>
-             <Paper>
-                <Box
-                    sx={{
-                        margin: 'auto',
-                        padding: 'auto',
-                        backgroundColor: 'tan',
-                        display: 'flex',
-                        align: 'center',
-                        '& > :not(style)': {
-                            m: 5,
-                            width: 300,
-                        },
-                    }}
-                >
-                <div>
+              
                 <h1>{movie.title}</h1>
-                </div>
+                <p> <span>{genres.map(genre => genre.name).join(' , ')}</span></p>
+              
+                <Paper
+                sx={{ 
+                    // margin: 1,
+                    padding: 5,
+                    width: 300,
+                    margin: 'auto'
+
+                }}
+                 >
                 <img src={movie.poster} />
-                <p>{movie.description}</p>
-            
-            </Box>
-            </Paper>
-            <p> <span>{genres.map(genre => genre.name).join(' , ')}</span></p>
+                </Paper>
+                <h5>{movie.description}</h5>
+
+           
         </>
     )
 }
