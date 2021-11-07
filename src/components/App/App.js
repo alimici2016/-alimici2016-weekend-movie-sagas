@@ -8,16 +8,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
-
       <Router>
         <Route path="/" exact>
-
           <nav>
-
-            <Link Link to="/form">Form</Link>
-
+            <button>
+              <Link Link to="/form">Form</Link>
+            </button>
           </nav>
+          <h1>The Movies Saga!</h1>
           <MovieList />
         </Route>
 
