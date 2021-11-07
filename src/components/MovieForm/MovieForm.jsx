@@ -47,7 +47,7 @@ function MovieForm() {
             value={movie.description}
             >
             </input>
-            <button onClick={ }></button>
+            <button onClick={handleSubmit}></button>
             </form>
         </div>
     )

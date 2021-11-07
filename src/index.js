@@ -11,18 +11,46 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
+const movieObject = {
+    title: '',
+    poster: '',
+    description: ''
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres)
+    yield takeEvery('ADD_MOVIE', addMovie)
 };
 
-function* fetchGenres (action) {
-    try{
+function* addMovie() {
+    try {
+        axios.post('/api/movie', action.payload);
+        yield put({})
+
+    } catch (error) {
+        console.log('ERROR IN POST', error);
+        yield put({ type: 'POST_ERROR' })
+    }
+}
+
+const newMovieReducer = (state = movieObject, action) => {
+    switch (action.type) {
+        case 'ADD_MOVIE':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+
+function* fetchGenres(action) {
+    try {
         let movie = action.payload
         const response = yield axios.get(`/api/genre/details?id=${movie.id}`)
-        yield put ({type: 'SET_GENRES', payload: response.data})
-    }catch(err) {
+        yield put({ type: 'SET_GENRES', payload: response.data })
+    } catch (err) {
         console.log(err)
     }
 }
@@ -63,7 +91,7 @@ const movieId = (state = {}, action) => {
         default:
             return state;
     }
-    
+
 };
 
 
@@ -82,7 +110,8 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        movieId
+        movieId,
+        newMovieReducer
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
