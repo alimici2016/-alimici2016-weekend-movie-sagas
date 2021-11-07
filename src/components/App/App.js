@@ -9,11 +9,11 @@ import {useDispatch} from 'react-redux'
 
 function App() {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch({ type: 'FIND_GENRE' });
-  }, [])
+  // useEffect(() => {
+  //   dispatch({ type: 'FIND_GENRE' });
+  // }, [])
 
   return (
     <div className="App">

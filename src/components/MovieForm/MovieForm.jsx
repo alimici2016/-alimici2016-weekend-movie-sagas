@@ -26,8 +26,12 @@ function MovieForm() {
     const addMovie = (event) => {
         event.preventDefault();
         dispatch({type: "ADD_MOVIE", payload: movie })
-        // history.push('/');
+        history.push('/');
     };
+
+    const handleCancel = () => {
+        history.push('/')
+    }
 
     return (
         <>
@@ -56,8 +60,7 @@ function MovieForm() {
             >
             </input>
             <select
-            // value={genre_id}
-            onChange={handleChange}>
+            onChange={() => handleChange(event, 'genre_id')}>
               <option value="">Choose a category</option>
               <option value={1}>Adventure</option>
               <option value={2}>Animated</option>
@@ -72,8 +75,10 @@ function MovieForm() {
               <option value={11}>Science Fiction</option>
               <option value={12}>Space-Opera</option>
               <option value={13}>Superhero</option>
-            <button type= "submit">Submit</button>
+            
             </select>
+            <button type= "submit">Save</button>
+            <button onClick={handleCancel}>Cancel</button>
             </form>
         </div>
         </>
@@ -81,4 +86,4 @@ function MovieForm() {
 
 };
 
-export default MovieForm
+export default MovieForm;
