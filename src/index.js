@@ -16,11 +16,23 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres)
     yield takeEvery('ADD_MOVIE', addMovie) //saga for when I want to add a movie this takes us to the addMovie function
+    yield takeEvery ('DELETE_MOVIE', deleteMovie)
 };
+
+function* deleteMovie() {
+    try{
+        yield axios.delete(`/api/movie/${action.payload.id}`)
+        yield put({ type: 'FETCH_MOVIES' })
+    }catch{
+        console.log('ERROR IN DELETE', error);
+        yield put({ type: 'DELETE_ERROR' })
+    }
+}
+
 
 function* addMovie(action) {//add move takes in the action that was dispatched to post to the database, then rerender the movies
     try {
-        axios.post('/api/movie', action.payload);
+        yield axios.post('/api/movie', action.payload);
         yield put({ type: 'FETCH_MOVIES' })
     } catch (error) {
         console.log('ERROR IN POST', error);

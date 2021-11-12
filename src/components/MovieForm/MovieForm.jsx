@@ -1,6 +1,10 @@
 import { useState } from 'react'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 
 function MovieForm() {
 
@@ -12,7 +16,8 @@ function MovieForm() {
         title:'',
         poster:'',
         description:'',
-        genre_id:''
+        genre_id:'',
+        director:''
     });
 
     const handleChange = (event, property) => {
@@ -22,7 +27,7 @@ function MovieForm() {
     const addMovie = (event) => {
         event.preventDefault();
         dispatch({type: "ADD_MOVIE", payload: movie })
-        history.push('/');
+        history.push('/list');
     };
 
     const handleCancel = () => {
@@ -34,47 +39,46 @@ function MovieForm() {
         <h3>Submit your own!</h3>
         <div>
             <form onSubmit={addMovie}>
-            <input
+            <TextField id="outlined-basic" placeholder="title" variant="filled" 
             onChange={(event) => handleChange(event, 'title')}
             type ="text"
-            placeholder="title"
             value={movie.title}
-            >
-            </input>
-            <input
+            />
+             <TextField id="outlined-basic" placeholder= "director" variant="filled"
+            onChange={(event) => handleChange(event, 'director')}
+            type ="text"
+            value={movie.director}
+            />
+            <TextField id="outlined-basic" placeholder="url" variant="filled" 
             onChange={(event) => handleChange(event, 'poster')}
             type ="text"
-            placeholder="url"
             value={movie.poster}
-            >
-            </input>
-            <input
+            />
+            <TextField id="outlined-basic" placeholder= "description" variant="filled"
             onChange={(event) => handleChange(event, 'description')}
             type ="text"
-            placeholder= "description"
             value={movie.description}
-            >
-            </input>
-            <select
+            />
+           <Select
             onChange={() => handleChange(event, 'genre_id')}>
-              <option value="">Choose a category</option>
-              <option value={1}>Adventure</option>
-              <option value={2}>Animated</option>
-              <option value={3}>Biographical</option>
-              <option value={4}>Comedy</option>
-              <option value={5}>Disaster</option>
-              <option value={6}>Drama</option>
-              <option value={7}>Epic</option>
-              <option value={8}>Fantasy</option>
-              <option value={9}>Musical</option>
-              <option value={10}>Romantic</option>
-              <option value={11}>Science Fiction</option>
-              <option value={12}>Space-Opera</option>
-              <option value={13}>Superhero</option>
+             <MenuItem value="">Choose a category</MenuItem>
+             <MenuItem value={1}>Adventure</MenuItem>
+             <MenuItem value={2}>Animated</MenuItem>
+             <MenuItem value={3}>Biographical</MenuItem>
+             <MenuItem value={4}>Comedy</MenuItem>
+             <MenuItem value={5}>Disaster</MenuItem>
+             <MenuItem value={6}>Drama</MenuItem>
+             <MenuItem value={7}>Epic</MenuItem>
+             <MenuItem value={8}>Fantasy</MenuItem>
+             <MenuItem value={9}>Musical</MenuItem>
+             <MenuItem value={10}>Romantic</MenuItem>
+             <MenuItem value={11}>Science Fiction</MenuItem>
+             <MenuItem value={12}>Space-Opera</MenuItem>
+             <MenuItem value={13}>Superhero</MenuItem>
             
-            </select>
-            <button type= "submit">Save</button>
-            <button onClick={handleCancel}>Cancel</button>
+              </Select>
+            <Button type= "submit">Save</Button>
+            <Button onClick={handleCancel}>Cancel</Button>
             </form>
         </div>
         </>
