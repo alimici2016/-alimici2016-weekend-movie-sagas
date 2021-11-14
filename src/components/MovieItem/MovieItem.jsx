@@ -1,12 +1,29 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router';
-import Paper from '@mui/material/Paper';
-import { Container } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import ReactCardFlip from 'react-card-flip';
+import { useState } from 'react';
+import { useSelector } from 'react-redux'
 
 function MovieItem({ movie }) {
 
+    const film = useSelector(store => store.searchMovieReducer)
+
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const [isFlipped, setIsFlipped] = useState(false)
+
+    const handleFlip = () => {
+        setIsFlipped(!isFlipped);
+    }
+
+    const handleDelete = () => {
+        dispatch({ type: 'DELETE_MOVIE', payload: movie })
+    }
 
     const handleClick = () => {
         dispatch({ type: 'SET_MOVIE', payload: movie })
@@ -18,33 +35,53 @@ function MovieItem({ movie }) {
     //below we have the individual items, being rendered.
     return (
         <>
-            <Paper
-                sx={{
-                   margin: 'auto'
 
-                }}>
-                <Container
-                sx={{
-                    margin: 1,
-                    padding: 5,
-                    '&:hover': {
-                        opacity: [.8]
-                    },
-                    '& > :not(style)': {
-                        m: .1,
-                        width: 300,
-                    },
-                }}
-                >
+
+
+            <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                 <div>
-                    <h1 key={movie.id}></h1>
-                    <h3>{movie.title}</h3>
-                    <img src={movie.poster}
-                        alt={movie.title}
-                        onClick={handleClick} />
+                    <Card sx={{ width: 280, margin: 2, padding: 5 }}>
+                        <h5> {movie.title}</h5>
+                        <CardMedia
+                            component="img"
+                            height="430"
+                            image={movie.poster}
+                            onClick={handleFlip}
+                        />
+                    </Card>
                 </div>
-                </Container>
-        </Paper>
+
+                <div>
+                    <Card sx={{ width: 280, margin: 2, padding: 5 }}>
+                        <h2> {movie.title}</h2>
+                        <h3> Director: {movie.director}</h3>
+                        <CardMedia
+                            // component="img"
+                            height="200"
+                            margin='15'
+                            onClick={handleFlip}
+                        />
+                        <CardActions>
+                            <Button onClick={handleClick} size="small">Learn More</Button>
+                            <Button onClick={handleDelete} size="small">Delete</Button>
+                        </CardActions>
+                    </Card>
+                </div>
+            </ReactCardFlip>
+
+            <div>
+                
+                <h1>{film.Title}</h1>
+                <h2>{film.Director}</h2>
+                <p>{film.Genre}</p>
+                <img src={film.Poster}
+                // alt='Guardians of the Galaxy Vol.2'
+                >
+
+                </img>
+            </div>
+
+
         </>
     )
 };
