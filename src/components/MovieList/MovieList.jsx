@@ -7,6 +7,8 @@ function MovieList() {
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
+    
+    
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -16,10 +18,11 @@ function MovieList() {
         <main>
             <h1>Movies</h1>
             <section className="movies">
-                 {movies.map(movie => ( 
-                    <MovieItem key={movie.id} movie={movie} /> 
+                {movies.map(movie => (
+                    <MovieItem key={movie.id} movie={movie} />
                 ))}
             </section>
+
         </main >
 
     );

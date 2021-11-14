@@ -5,6 +5,7 @@ import MovieForm from '../MovieForm/MovieForm'
 import Header from '../Header/Header';
 import Detail from '../Detail/Detail'
 import Button from '@mui/material/Button';
+import SearchForm from '../MovieForm/SearchForm';
 
 function App() {
 
@@ -26,6 +27,10 @@ function App() {
 
         <Route path='/detail'>
           <Detail />
+        </Route>
+
+        <Route path='/searchform'>
+        <SearchForm />
         </Route>
 
         <Route path='/form'>

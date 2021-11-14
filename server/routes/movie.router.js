@@ -19,31 +19,28 @@ router.get('/', (req, res) => {
 
 });
 
-// router.get('/', (req,res) => {
-//   axios.get(`https://api-gate2.movieglu.com/closestShowing/?n=2&film_id=291286${process.env.MOVIE_API_KEY}`)
-// }).then((response) => {
-//   console.log(`API get res ->`, response.data);
-//   res.send(response.data);
-// }) .catch((err) => {
-//   console.log(`Error in get ->`, err);
-// });
+router.get('/:search', (req, res) => {
+  let search = req.params.search;
+  console.log(search)
+  axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=3ac688c6`)
+    .then((response) => {
+      console.log('API RESULTS', response.data);
+      res.send(response.data);
+    }).catch((err) => {
+      console.log('Error in get', err);
+    });
 
+});
 
 router.delete('/:id', (req, res) => {
   let id = req.params.id
 
-  const query = `
-  DELETE FROM "movies_genres" 
-  WHERE movie_id = $1;`;
-
-  const queryText = `
-  DELETE FROM "movies" 
-  WHERE id = $1`
-
+  const query =
+    `DELETE FROM "movies" 
+    WHERE id = $1;`;
 
   let values = [id]
-
-  pool.query(query, queryText, values)
+  pool.query(query, values)
     .then(results => {
       res.sendStatus(204)
     }).catch(err => {
@@ -51,9 +48,6 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(500)
     })
 });
-
-
-
 
 
 router.post('/', (req, res) => {
