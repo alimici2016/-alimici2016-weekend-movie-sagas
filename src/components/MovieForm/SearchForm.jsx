@@ -7,16 +7,22 @@ function SearchForm() {
 
     const [searchMovie, setSearchMovie] = useState("");
 
+    const film = useSelector(store => store.searchMovieReducer)
+
     const history = useHistory();
 
     const handleChange = (e) => {
         setSearchMovie(e.target.value);
     };
 
+    // const filmObject = {
+    //     poster: 
+    // }
     const handleSearch = (e) => {
         e.preventDefault();
         console.log(`Searching`);
         dispatch({ type: "SEARCH_MOVIES", payload: searchMovie });
+        // dispatch({type: "ADD_MOVIE", payload:  })
         setSearchMovie("");
         history.push('/list')
     };
@@ -31,9 +37,6 @@ function SearchForm() {
                 />
                 <button type="submit">Search</button>
             </form>
-
-
-
         </div>
     );
 

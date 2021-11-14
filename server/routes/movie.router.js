@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.get('/:search', (req, res) => {
   let search = req.params.search;
   console.log(search)
-  axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=3ac688c6`)
+  axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}`)
     .then((response) => {
       console.log('API RESULTS', response.data);
       res.send(response.data);

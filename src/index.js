@@ -48,6 +48,7 @@ function* deleteMovie(action) {
 function* addMovie(action) {//add move takes in the action that was dispatched to post to the database, then rerender the movies
     try {
         yield axios.post('/api/movie', action.payload);
+        console.log(action.payload)
         yield put({ type: 'FETCH_MOVIES' })
     } catch (error) {
         console.log('ERROR IN POST', error);

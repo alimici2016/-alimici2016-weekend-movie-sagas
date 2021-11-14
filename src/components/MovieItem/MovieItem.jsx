@@ -70,6 +70,7 @@ function MovieItem({ movie }) {
             </ReactCardFlip>
 
             <div>
+                
                 <h1>{film.Title}</h1>
                 <h2>{film.Director}</h2>
                 <p>{film.Genre}</p>
