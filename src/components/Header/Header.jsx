@@ -16,7 +16,7 @@ function Header() {
 
                 <h1 onClick={handleClick} className="class-title">The Movies Saga!</h1>
                 <nav>
-                    <Button size="medium" variant="outlined" >
+                    <Button size="medium" variant="outlined" sx={{ml:10}}>
                         <Link to="/list">Movies</Link>
                     </Button>
                 </nav>

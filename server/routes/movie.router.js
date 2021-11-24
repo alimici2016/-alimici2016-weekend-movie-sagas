@@ -1,4 +1,4 @@
-const { default: axios } = require('axios');
+const axios = require('axios');
 const express = require('express');
 const { query } = require('../modules/pool');
 const router = express.Router();
@@ -24,12 +24,11 @@ router.get('/:search', (req, res) => {
   console.log(search)
   axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}`)
     .then((response) => {
-      console.log('API RESULTS', response.data);
+      console.log('api response', response.data);
       res.send(response.data);
     }).catch((err) => {
       console.log('Error in get', err);
     });
-
 });
 
 router.delete('/:id', (req, res) => {

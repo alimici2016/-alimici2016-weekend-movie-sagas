@@ -10,8 +10,6 @@ import { useSelector } from 'react-redux'
 
 function MovieItem({ movie }) {
 
-    const film = useSelector(store => store.searchMovieReducer)
-
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -35,8 +33,6 @@ function MovieItem({ movie }) {
     //below we have the individual items, being rendered.
     return (
         <>
-
-
 
             <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                 <div>
@@ -67,20 +63,7 @@ function MovieItem({ movie }) {
                         </CardActions>
                     </Card>
                 </div>
-            </ReactCardFlip>
-
-            <div>
-                
-                <h1>{film.Title}</h1>
-                <h2>{film.Director}</h2>
-                <p>{film.Genre}</p>
-                <img src={film.Poster}
-                // alt='Guardians of the Galaxy Vol.2'
-                >
-
-                </img>
-            </div>
-
+                </ReactCardFlip>
 
         </>
     )

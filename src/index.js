@@ -103,7 +103,6 @@ const movieId = (state = {}, action) => {
         default:
             return state;
     }
-
 };
 
 const searchMovieReducer = (state={}, action) => {

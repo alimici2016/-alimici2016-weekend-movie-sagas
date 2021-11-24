@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function SearchForm() {
+
+    const film = useSelector(store => store.searchMovieReducer)
+
     const dispatch = useDispatch();
 
     const [searchMovie, setSearchMovie] = useState("");
-
-    const film = useSelector(store => store.searchMovieReducer)
 
     const history = useHistory();
 
@@ -15,16 +16,13 @@ function SearchForm() {
         setSearchMovie(e.target.value);
     };
 
-    // const filmObject = {
-    //     poster: 
-    // }
     const handleSearch = (e) => {
         e.preventDefault();
         console.log(`Searching`);
         dispatch({ type: "SEARCH_MOVIES", payload: searchMovie });
-        // dispatch({type: "ADD_MOVIE", payload:  })
+
         setSearchMovie("");
-        history.push('/list')
+        // history.push('/list')
     };
     return (
         <div>
@@ -37,8 +35,19 @@ function SearchForm() {
                 />
                 <button type="submit">Search</button>
             </form>
+
+            <div>
+                {/* <p>{JSON.stringify(film)}</p> */}
+                <h1>{film.Title}</h1>
+                <h2>{film.Director}</h2>
+                <p>{film.Genre}</p>
+                <img src={film.Poster}
+                // alt='Guardians of the Galaxy Vol.2'
+                >
+
+                </img>
+            </div>
         </div>
     );
-
 }
 export default SearchForm;

@@ -59,7 +59,7 @@ function MovieForm() {
             type ="text"
             value={movie.description}
             />
-           <Select
+          ` <Select
             onChange={() => handleChange(event, 'genre_id')}>
              <MenuItem value="">Choose a category</MenuItem>
              <MenuItem value={1}>Adventure</MenuItem>
@@ -76,7 +76,7 @@ function MovieForm() {
              <MenuItem value={12}>Space-Opera</MenuItem>
              <MenuItem value={13}>Superhero</MenuItem>
             
-              </Select>
+              </Select>`
             <Button type= "submit">Save</Button>
             <Button onClick={handleCancel}>Cancel</Button>
             </form>
