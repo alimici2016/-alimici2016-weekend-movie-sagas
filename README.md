@@ -10,20 +10,19 @@ This application was the first time I used SAGA in an application of this magnit
 Was also able to briefly use the omdb API.
 
 ## Set up
-Fork and clone repository, then set up an set up a PostgreSQL database called saga_movies_weekend on port 5432.
-You can either copy paste data from the database.sql or load query once you load up postico.
-Npm install to get the dependecies, then npm run server, npm run client.
-This will take you to localhost 3000 where you should be able to view the application.
+-Fork and clone repository, then set up an set up a PostgreSQL database called saga_movies_weekend on port 5432.
+-You can either copy paste data from the database.sql or load query once you load up postico.
+-Npm install to get the dependencies, then npm run server, npm run client.
+-This will take you to localhost 3000 where you should be able to view the application.
 
 ## Technologies used in this app
-
-Node.js
-Express
-React
-Redux
-Redux-Saga
-PostgreSQL
-Material-UI
-axios
-HTML
-CSS
+-Node.js
+-Express
+-React
+-Redux
+-Redux-Saga
+-PostgreSQL
+-Material-UI
+-axios
+-HTML
+-CSS
