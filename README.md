@@ -9,6 +9,14 @@ This is web application that allows a user to make a personal list of movies. In
 This application was the first time I used SAGA in an application of this magnitude, it was somewhat challenging to grasp the concept at first but now that I've completed this assignment I feel much better about it. This app also uses postgresql to store movies in a database, node.js for server routes, of course react/react-redux/redux-saga. Also some styling with material UI.
 Was also able to briefly use the omdb API.
 
+## Screenshots
+![Screenshot 6](screenshot6.png)
+![Screenshot 7](screenshot7.png)
+![Screenshot 8](screenshot8.png)
+![Screenshot 9](screenshot9.png)
+![Screenshot 10](screenshot10.png)
+![Screenshot 11](screenshot11.png)
+
 ## Set up
 -Fork and clone repository, then set up an set up a PostgreSQL database called saga_movies_weekend on port 5432.
 -You can either copy paste data from the database.sql or load query once you load up postico.
