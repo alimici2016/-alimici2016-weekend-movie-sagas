@@ -24,13 +24,11 @@ Was also able to briefly use the omdb API.
 -This will take you to localhost 3000 where you should be able to view the application.
 
 ## Technologies used in this app
--Node.js
--Express
--React
--Redux
--Redux-Saga
--PostgreSQL
--Material-UI
--axios
--HTML
--CSS
+1. [Node.js](https://nodejs.org/en/)
+2. [Express](https://expressjs.com/)
+3. [React](https://reactjs.org/)
+4. [Redux](https://redux.js.org/)
+5. [Redux-Saga](https://redux-saga.js.org/)
+6. [PostgreSQL](https://www.postgresql.org/)
+7. [Material-UI](https://mui.com/)
+8. [CSS]
