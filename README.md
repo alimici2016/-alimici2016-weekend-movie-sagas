@@ -30,5 +30,4 @@ Was also able to briefly use the omdb API.
 4. [Redux](https://redux.js.org/)
 5. [Redux-Saga](https://redux-saga.js.org/)
 6. [PostgreSQL](https://www.postgresql.org/)
-7. [Material-UI](https://mui.com/)
-8. [CSS]
+7. [Material-UI](https://mui.com/) 
